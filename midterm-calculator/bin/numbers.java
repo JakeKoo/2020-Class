@@ -1,0 +1,23 @@
+
+public enum numbers {
+	ZERO,
+	ONE,
+	TWO,
+	THREE,
+	FOUR,
+	FIVE,
+	SIX,
+	SEVEN,
+	EIGHT,
+	NINE,
+	TEN,
+	ELEVEN,
+	TWELEVE,
+	THIRTEEN,
+	FOURTEEN,
+	FIFTEEN,
+	SIXTEEN,
+	SEVENTEEN,
+	NINETEEN,
+	TWENTY
+}
