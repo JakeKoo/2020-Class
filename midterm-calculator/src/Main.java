@@ -12,41 +12,41 @@ import java.util.Scanner;
  */
 public class Main {
 	static Scanner Scan = new Scanner(System.in);
-	static int memSize;
-	static Equation equStack[] = new Equation[1];
+	static int memorySize;
+	static Equation equationStack[] = new Equation[1];
 	
 
 	/**
 	 * Main
 	 * 
 	 * Sets up the key values and starts the interface 
-	 * @param args
+	 * @param args - String Array of command line arguments
 	 */
 	public static void main(String[] args) {
 		String action = "";
-		memSize = 0;
-		Equation newEqu;
+		memorySize = 0;
+		Equation newEquation;
 		
 		//Create an endless loop with the exit commands exiting the script
 		while (1 == 1){
 			System.out.printf("Would you like to enter an (e)quation,\n Look up from (m)emory,\n or (q)uit?\n");
 			System.out.print(">");
 			action = Scan.next();
-			if(action.contains("e") || action.contains("equation")){
-				newEqu = getEquation();
-				if(memSize == 0)
-					equStack[0] = newEqu;
+			if (action.contains("e") || action.contains("equation")){
+				newEquation = getEquation();
+				if(memorySize == 0)
+					equationStack[0] = newEquation;
 				else
-					equStack = addEqu(memSize, equStack, newEqu);
-				memSize += 1;
+					equationStack = addEqu(memorySize, equationStack, newEquation);
+				memorySize += 1;
 				action = "";
-				System.out.println(newEqu);
+				System.out.println(newEquation);
 			}	
-			else if(action.contains("m") || action.contains("memory")){
+			else if (action.contains("m") || action.contains("memory")){
 				getMemory();
 				action = "";
 			}
-			else if(action.contains("q") || action.contains("quit")) {
+			else if (action.contains("q") || action.contains("quit")) {
 				System.out.printf("\nOk, goodbye");
 				Scan.close();
 				System.exit(0);
@@ -61,30 +61,30 @@ public class Main {
 	 * getEquation
 	 * 
 	 * Takes in the values entered by the user for the calculation
-	 * @return curEquation Returns Equation object with two values and an operator
+	 * @return currentEquation Returns Equation object with two values and an operator
 	 */
 	public static Equation getEquation(){
 		String firstNumber;
 	    String secondNumber;
 	    String operator;
-	    Equation curEquation;
+	    Equation currentEquation;
 	    System.out.printf("\n Please enter the first number\n");
 		System.out.print(">");
 	    firstNumber = Scan.next();
 	    System.out.printf("\n Please choose an operation, the following are supported:\n +,-,*,/,^,(r)oot\n");
 		System.out.print(">");
 	    operator = Scan.next();
-	    if(operator.contains("sqrt") || operator.contains("s")){
-	    	curEquation = new Equation(firstNumber, operator);
+	    if (operator.contains("sqrt") || operator.contains("s")){
+	    	currentEquation = new Equation(firstNumber, operator);
 	    }
 	    else{
 	    	System.out.printf("\n Please enter the second number\n");
 			System.out.print(">");
 	    	secondNumber = Scan.next();
-	    	curEquation = new Equation(firstNumber, secondNumber, operator);
+	    	currentEquation = new Equation(firstNumber, secondNumber, operator);
 	    }
 
-		return curEquation;
+		return currentEquation;
 	}
 
 	
@@ -92,14 +92,15 @@ public class Main {
 	 * getMemory
 	 * 
 	 * When called prints all memory items to screen
+	 * @return System.out.println Prints the output
 	 */
 	public static void getMemory(){
 		int memLoc = -1;
-		while(memLoc > memSize || memLoc < 1){
-			System.out.printf("Currently %s in Memory\nPlease select a number:", memSize);
+		while(memLoc > memorySize || memLoc < 1){
+			System.out.printf("Currently %s in Memory\nPlease select a number:", memorySize);
 			memLoc = Scan.nextInt();
 		}
-		System.out.println(equStack[memLoc-1]);
+		System.out.println(equationStack[memLoc-1]);
 		
 	}
 	
