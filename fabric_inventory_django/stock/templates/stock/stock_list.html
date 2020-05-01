@@ -1,0 +1,36 @@
+<h1>Stock</h1>
+
+<table border="1">
+<thead>
+    <tr>
+    <th>Type</th>
+    <th>Subtype</th>
+    <th>Color</th>
+    <th>Subcolor</th>
+    <th>Length Remaining</th>
+    <th>Width</th>
+    <th>Cost</th>
+    <th>View</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+    {% for stock in object_list %}
+    <tr>
+    <td>{{ stock.fabric_type }}</td>
+    <td>{{ stock.fabric_subtype }}</td>
+    <td>{{ stock.fabric_color }}</td>
+    <td>{{ stock.fabric_subcolor }}</td>
+    <td>{{ stock.fabric_length_stock }}</td>
+    <td>{{ stock.fabric_width }}</td>
+    <td>{{ stock.fabric_cost }}</td>
+    <td><a href="{% url "stock_view" stock.id %}">view</a></td>
+    <td><a href="{% url "stock_edit" stock.id %}">edit</a></td>
+    <td><a href="{% url "stock_delete" stock.id %}">delete</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+<a href="{% url "stock_new" %}">New</a>
